@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Codecool.ApplicationProcess.Entities;
 
 namespace Codecool.ApplicationProcess.Data
@@ -30,36 +31,44 @@ namespace Codecool.ApplicationProcess.Data
         /// <inheritdoc/>
         public int AmountOfApplicationAfter(DateTime date)
         {
-            // Your implementation goes here.
-            throw new NotImplementedException();
+            int count = _applications.Where(x => x.ApplicationDate >= date).Count();
+            return count;
         }
 
         /// <inheritdoc/>
         public IEnumerable<Mentor> GetAllMentorFrom(City city)
         {
-            // Your implementation goes here.
-            throw new NotImplementedException();
+            var result = from mentor in _mentors
+                         where mentor.City.Equals(city)
+                         select mentor;
+            return result;
         }
 
         /// <inheritdoc/>
         public IEnumerable<Mentor> GetAllMentorWhomFavoriteLanguage(string language)
         {
-            // Your implementation goes here.
-            throw new NotImplementedException();
+            var result = from mentor in _mentors
+                         where mentor.ProgrammingLanguage.Equals(language)
+                         select mentor;
+            return result;
         }
 
         /// <inheritdoc/>
         public IEnumerable<Applicant> GetApplicantsOf(string contactMentorName)
         {
-            // Your implementation goes here.
-            throw new NotImplementedException();
+            var result = from application in _applications
+                         where application.Mentor.Nickname.Equals(contactMentorName)
+                         select application.Applicant;
+            return result;
         }
 
         /// <inheritdoc/>
         public IEnumerable<string> GetAppliedStudentEmailList()
         {
-            // Your implementation goes here.
-            throw new NotImplementedException();
+            var result = from applicant in _applicants
+                         where applicant.Status.Equals(ApplicationStatus.Applied)
+                         select applicant.Email;
+            return result;
         }
 
         /// <summary>

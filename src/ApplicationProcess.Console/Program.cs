@@ -65,17 +65,44 @@ namespace Codecool.ApplicationProcess
 
         private static void GetStudentEmailList()
         {
-            throw new NotImplementedException();
+            var applicants = _repo.GetAppliedStudentEmailList();
+            foreach (var applicant in applicants)
+            {
+            Console.WriteLine(applicant);
+            }
         }
 
         private static void GetApplicantsOfMentor()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Please write a mentor's nickname:");
+            var answer = Console.ReadLine();
+
+            var applicants = _repo.GetApplicantsOf(answer);
+
+            foreach (var applicant in applicants)
+            {
+                Console.WriteLine(applicant.FirstName + " " + applicant.LastName);
+            }
         }
 
         private static void GetMentorWithFavouriteLanuage()
         {
-            throw new NotImplementedException();
+            List<string> possibleLanguages = new List<string>() { "C#", "Java", "Ruby", "Javascript" };
+            Console.WriteLine("Please write a programming language:");
+            var answer = Console.ReadLine();
+
+            while (!possibleLanguages.Contains(answer))
+            {
+                Console.WriteLine("Please write a programming language:");
+                answer = Console.ReadLine();
+            }
+
+            var mentors = _repo.GetAllMentorWhomFavoriteLanguage(answer);
+
+            foreach (var mentor in mentors)
+            {
+                Console.WriteLine(mentor);
+            }
         }
 
         private static void GetAmountOfApplicants()
@@ -92,7 +119,7 @@ namespace Codecool.ApplicationProcess
 
             var amount = _repo.AmountOfApplicationAfter(startDate);
 
-            Console.WriteLine($"The ");
+            Console.WriteLine($"The amount of application after {startDate} is  {amount}");
         }
 
         /// <summary>
