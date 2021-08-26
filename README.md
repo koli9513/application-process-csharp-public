@@ -13,3 +13,7 @@ Run the Codecool.ApplicationProcess.exe file in the .\src\ApplicationProcess.Con
 - Search mentors based on favourite programming language
 - Get a mentor's applicants
 - Get the emails of applied students
+
+## Main Focus
+
+The main focus on this project was to get familiar with C# and Visual Studio and how to use LINQ.
