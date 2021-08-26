@@ -27,7 +27,15 @@ namespace Codecool.ApplicationProcess
         /// <param name="args">Command line arguments.</param>
         public static void Main(string[] args)
         {
-            _repo = new InMemoryRepository();
+            if (args.Length == 0 || args[0] != "xml")
+            {
+                _repo = new InMemoryRepository();
+            }
+            else
+            {
+                _repo = new XMLRepository();
+            }
+
             PrintMenu();
             SelectMenuItem();
         }
@@ -68,7 +76,7 @@ namespace Codecool.ApplicationProcess
             var applicants = _repo.GetAppliedStudentEmailList();
             foreach (var applicant in applicants)
             {
-            Console.WriteLine(applicant);
+                Console.WriteLine(applicant);
             }
         }
 
