@@ -78,6 +78,8 @@ namespace Codecool.ApplicationProcess
             {
                 Console.WriteLine(applicant);
             }
+
+            Console.ReadKey();
         }
 
         private static void GetApplicantsOfMentor()
@@ -91,6 +93,8 @@ namespace Codecool.ApplicationProcess
             {
                 Console.WriteLine(applicant.FirstName + " " + applicant.LastName);
             }
+
+            Console.ReadKey();
         }
 
         private static void GetMentorWithFavouriteLanuage()
@@ -111,6 +115,8 @@ namespace Codecool.ApplicationProcess
             {
                 Console.WriteLine(mentor);
             }
+
+            Console.ReadKey();
         }
 
         private static void GetAmountOfApplicants()
@@ -128,6 +134,7 @@ namespace Codecool.ApplicationProcess
             var amount = _repo.AmountOfApplicationAfter(startDate);
 
             Console.WriteLine($"The amount of application after {startDate} is  {amount}");
+            Console.ReadKey();
         }
 
         /// <summary>
@@ -150,6 +157,8 @@ namespace Codecool.ApplicationProcess
             {
                 Console.WriteLine(mentor);
             }
+
+            Console.ReadKey();
         }
 
         private static void PrintMenu()
